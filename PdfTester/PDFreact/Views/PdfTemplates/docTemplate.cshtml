@@ -1,0 +1,47 @@
+﻿@using System
+@using System.Globalization
+@using System.Linq
+@model EBPP.Domain.Entities.Documents.TargetDocument
+@{
+    Layout = null;
+    var orderSubTotal = 0.00;
+}
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <title>Saph Invoice</title>
+</head>
+<body class="main">
+    <div class="companyinformation">
+        CompanyName : @Model.Content.Header.Elements.First(e => e.Attribute == "Company").Value <br/>
+        Adress : @Model.Content.Header.Elements.First(e => e.Attribute == "Address").Value
+    </div>
+    <hr class="invisible" />    
+    <table class="postable">
+        <thead>
+            <tr>
+            <tr class="postheader">
+                <td>PhoneNumber</td>
+                <td>Minutes</td>
+                <td>Cost</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Content.Body.Lines)
+            {
+                var cost = double.Parse(line.Elements.First(e => e.Attribute == "Cost").Value, CultureInfo.InvariantCulture);
+                orderSubTotal += cost;
+                <tr>
+                    <td>@line.Elements.First(e => e.Attribute == "PhoneNumber").Value</td>
+                    <td>@line.Elements.First(e => e.Attribute == "Minutes").Value</td>
+                    <td>@cost</td>
+                    <td class="right"><div class="sum-subtotal"> @orderSubTotal</div></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot><tr><td class="tfooter"></td> </tr></tfoot>
+    </table>
+</body>
+</html>

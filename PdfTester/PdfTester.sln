@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfTester1", "PdfTester1\PdfTester1.csproj", "{FBCBAE10-B05D-4044-BDE4-C84F9E59CE34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFreact", "PDFreact\PDFreact.csproj", "{3067E7CA-2901-4DBA-8E63-A6B4397A33F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBCBAE10-B05D-4044-BDE4-C84F9E59CE34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBCBAE10-B05D-4044-BDE4-C84F9E59CE34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBCBAE10-B05D-4044-BDE4-C84F9E59CE34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBCBAE10-B05D-4044-BDE4-C84F9E59CE34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3067E7CA-2901-4DBA-8E63-A6B4397A33F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3067E7CA-2901-4DBA-8E63-A6B4397A33F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3067E7CA-2901-4DBA-8E63-A6B4397A33F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3067E7CA-2901-4DBA-8E63-A6B4397A33F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

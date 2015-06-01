@@ -1,0 +1,420 @@
+﻿/*
+===================================
+     Load fonts from folder
+===================================
+*/
+@font-face {
+    font-family: Gentium;
+    src: url("fonts/Gentium/GenBasR.ttf");
+}
+@font-face {
+    font-family: Gentium;
+    font-weight: bold;
+    src: url("fonts/Gentium/GenBasB.ttf");
+}
+@font-face {
+    font-family: Gentium;
+    font-style: italic;
+    src: url("fonts/Gentium/GenBasI.ttf");
+}
+@font-face {
+    font-family: Gentium;
+    font-weight: bold;
+    font-style: italic;
+    src: url("fonts/Gentium/GenBasBI.ttf");
+}
+
+@font-face{
+    font-family: Sans;
+    src: url("fonts/OpenSans/OpenSans-Regular.ttf");
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: Sans;
+    src: url("fonts/OpenSans/OpenSans-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face{
+    font-family: Sans;
+    src: url("fonts/OpenSans/OpenSans-Italic.ttf");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face{
+    font-family: Sans;
+    src: url("fonts/OpenSans/OpenSans-BoldItalic.ttf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*
+===================================
+         Page Styles
+===================================
+*/
+
+/* Set up the the page styles that are the same for all pages */
+@page {
+    @top-left {
+        border-bottom: 15px solid yellowgreen;  /* The green line in the header */
+    }
+    @top-right {
+        border-bottom: 15px solid yellowgreen;  /* The green line in the header */
+    }
+    counter-increment: page 1;                  /* Increase the page counter on every page by one */
+    
+    size: A4;
+    margin: 1.5cm;
+    padding-top: 5mm;
+}
+
+/* The settings of the page named landscape */
+@page landscape {
+    size: A4 landscape;     /* The page should be landscape and of the size A4 */
+    
+    
+    
+    /* Remove the header for this page */
+    @top-left {
+        border:none;
+        content: "";
+        background: none;
+    }
+    @top-right {
+        border:none;
+        content: "";
+        background: none;
+    }
+    margin-left: 5mm;
+    padding-left: 5mm;
+    
+    margin-right: 5mm;
+    padding-right: 5mm;
+}
+
+@page landscape:right {
+    margin-top: 2cm;
+}
+
+@page landscape:left {
+    margin-bottom: 2cm;
+}
+
+/* Styles of the first page, aka the cover */
+@page:first {
+    /* Remove the header */
+    @top-left {
+        border:none;
+        content: "";
+        background: none;
+    }
+    @top-right {
+        border:none;
+        content: "";
+        background: none;
+    }
+    
+    /* Set the gradient on the page background */
+    background-image: radial-gradient(circle farthest-corner at 40% 40%, beige, yellowgreen);
+    
+    /* Remove the page margin as it is not needed and should not intervene the gradient */
+    margin: 0;
+}
+
+/* Set the styles for all pages on the left */
+@page:left {
+    
+    /* Set up the styles of the page numbering */
+    @top-left {
+        padding-top: 5mm;
+        padding-left: 2mm;
+        padding-bottom: -4mm;
+        content: counter(page);
+        font-size: 20pt;
+        font-family: Sans, sans-serif;
+    }
+    
+    /* Set up the styles of the chapter titles */
+    @top-right {
+        content: string(topic) " - " string(chaptertitle);
+        font-family: Sans, sans-serif;
+        font-style: italic;
+        padding-top: 5mm;
+        margin-right: 1cm;
+    }
+    
+    /* Set the paddings on the sides */
+    padding-right: 2cm;
+    padding-left: 1.5cm;
+}
+
+/* Set the styles for all pages on the right */
+@page:right {
+    
+    /* Set up the styles of the page numbering */
+    @top-right {
+        padding-top: 5mm;
+        padding-right: 2mm;
+        padding-bottom: -4mm;
+        content: counter(page);
+        font-size: 20pt;
+        font-family: Sans, sans-serif;
+    }
+    
+    /* Set up the styles of the chapter titles */
+    @top-left {
+        content: string(topic) " - " string(chaptertitle);
+        font-family: Sans, sans-serif;
+        font-style: italic;
+        padding-top: 5mm;
+        margin-left: 1cm;
+    }
+    
+    
+    /* Set the paddings on the sides */
+    padding-right: 1.5cm;
+    padding-left: 2cm;
+    
+}
+
+
+/* 
+    Styles used by the cover
+*/
+#coverList p {
+    padding: 1mm 0mm 1mm 2mm;
+    margin: 1mm;
+    text-align: left;
+    color: darkslategrey;
+}
+
+#coverList a {
+    color: darkslategrey;
+    text-decoration: none;
+}
+
+/*
+===================================
+       Media Styles
+===================================
+*/
+
+/*
+    When opened in a browser, some elements on the cover 
+    page like the picture should be hidden.
+*/
+@media screen {
+    h1 {
+        padding-top: 1cm;
+    }
+    .coverPage, #coverList {
+        display: none;
+    }
+}
+
+/*
+===================================
+        Heading Styles
+===================================
+*/
+h1 {
+    padding-top: 3.5cm;
+    counter-increment: h1 1;
+    counter-reset: h2 0;
+    font-size: 40pt;
+    string-set: topic self;
+    font-family: Sans, sans-serif;
+    text-align: center;
+}
+
+h2 {
+    break-before: page;      /* The chapter should always start on a new page */
+    counter-increment: h2 1;        /* Increment the chapter counter named h2 */
+    counter-reset: h3 0 figures 0;  /* Reset counters named h3 and figures */
+    string-set: chaptertitle self;  /* Set the current chapter title as string for the header */
+    padding-top: 1cm;
+    font-size: 22pt;
+    font-family: Sans, sans-serif;
+    font-style: italic;
+    clear: both;
+}
+
+h2::before {
+    content: counter(h2, upper-latin) " "; /* Add the chapter number */
+    color: yellowgreen;
+    padding-right: 5mm;
+}
+
+h3 {
+    counter-increment: h3 1;    /* Increase the counter for numbering of the sub-chapters */
+    font-family: Sans, sans-serif;
+    font-size: 16pt;
+    clear: both;
+}
+
+h3::before {
+    /* Add the Chapter and the Sub-Chapter numbers */
+    content: counter(h2, upper-latin) "." counter(h3) " ";
+    color: yellowgreen;
+    padding-right: 2mm;
+}
+
+
+/*
+===================================
+            Boxes
+===================================
+*/
+
+/*
+    The Important Box (e.g. Summary)
+*/
+figure.important {
+    border:2px solid yellowgreen;
+    break-inside: avoid-page;
+}
+
+figure.important > figcaption {
+    background-color: yellowgreen;
+    color: white;
+    padding: 1mm 1mm 1mm 2mm;
+    font-weight: bold;
+    font-family: Sans, sans-serif;
+    font-size: 14pt;
+}
+
+figure.important > div {
+    break-before: avoid-page;
+    margin: 2mm;
+}
+
+/*
+    The image box with caption
+*/
+figure.image {
+    break-inside: avoid-page;
+    margin: 0mm 5mm 2mm 5mm;
+    counter-increment: figures
+}
+
+figure.image > figcaption {
+    padding: 2mm 1mm 0mm 1mm;
+    font-family: Sans, sans-serif;
+    font-size: 9pt;
+    text-align: left;
+}
+
+figure.image > figcaption::before {
+    content: "Fig. " counter(h2, upper-latin) "." counter(figures) " "; /* Add figure numbering */
+    font-weight: bold;
+}
+/* Floats used by the image boxes */
+.floatl {
+    float:left;
+    margin-left: 0 !important;
+}
+
+.floatr {
+    float:right;
+    margin-right: 0 !important;
+}
+
+/*
+    Code Box
+*/
+div.note {
+    clear: both;
+    background-color: beige;
+    margin-top: 12pt;
+    margin-bottom: 12pt;
+    padding: 1mm 5mm 1mm 5mm;
+    border-top: 4px solid yellowgreen;
+    border-bottom: 4px solid yellowgreen;
+    break-inside: avoid-page;
+    break-before: avoid-page;
+}
+
+div.note strong {
+    color: crimson;
+}
+
+/*
+    Note Box
+*/
+/* Note that the same class is used for two different elements. 
+    The class styles depend on the element */
+p.note {  
+    background-color: beige;
+    padding: 2mm;
+    clear: both;
+}
+
+p.note::before {
+    content: "NOTE: ";
+    font-weight: bold;
+    font-family: Sans, sans-serif;
+}
+
+/*
+===================================
+            Tables
+===================================
+*/
+
+table {
+    clear: both; /* Make sure that there are no floats to the side of the table */
+}
+
+table.wide {
+    page: landscape; /* Set the name of the page containing this table */
+}
+
+table td {
+    padding: 2mm 4mm 2mm 4mm;
+    vertical-align: top;
+    break-inside: avoid-page; /* There should not be a page break inside a table cell */
+}
+
+/* Styles of table header cells */
+table th {
+    padding: 1mm 2mm 1mm 2mm;
+}
+
+/* The other table styles */
+table.styled {
+    border: 2px solid yellowgreen;
+    border-collapse: collapse;
+}
+
+/* Style the table header row */
+table.styled thead {
+    background-color: yellowgreen;
+    color:white;
+    font-family: Sans, sans-serif;
+}
+
+/* Have alternating colors for the rows */
+table.styled tr:nth-child(even) {
+    background-color: beige;
+}
+
+/*
+===================================
+       General Styles
+===================================
+*/
+body {
+    font-family: Gentium;
+}
+
+p {
+    text-align: justify;
+    hyphens: auto;
+}
+
+strong {
+    color: green;
+}

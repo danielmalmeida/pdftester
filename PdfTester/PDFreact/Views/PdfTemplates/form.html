@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" lang="en">
+<head>
+    <title>Official Form</title>
+    <style>
+        @page {
+            size: Letter;
+            margin: 0.5in;
+            margin-bottom: 0in;
+        }
+
+        body {
+            font-family: 'RealObjects core sans-serif', Arial, sans-serif;
+        }
+
+        p {
+            margin: 0.01in;
+            padding: 0pt;
+        }
+
+        h1 {
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 0px;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            padding: 0px;
+        }
+
+            td.formCounter {
+                vertical-align: top;
+                font-weight: bold;
+                padding-right: 1em;
+                padding-left: 1em;
+            }
+
+        strong.formCounter, b.formCounter {
+            font-weight: bold;
+            margin-right: 8pt;
+            margin-left: 8pt;
+            float: left;
+        }
+
+        input {
+            -ro-pdf-format: pdf;
+        }
+
+            input[type="radio"], input[type="checkbox"] {
+                margin: 1px;
+            }
+
+            input[type=checkbox] {
+                margin-right: 0.08in;
+                border: 1px solid black;
+                height: 8pt;
+                width: 8pt;
+                color: #0000cc;
+            }
+
+            input[type=text] {
+                border: none;
+                height: 10pt;
+                padding: 0px;
+                margin: 0px 1px;
+                color: #0000cc;
+                font-family: RealObjects core monospace, "Courier new", monospace;
+            }
+
+        ol {
+            padding-left: 0em;
+        }
+
+        .partHeading table {
+            width: auto;
+            font-size: 10pt;
+        }
+
+            .partHeading table td:first-child {
+                background-color: black;
+                color: white;
+                font-weight: bold;
+                padding-right: 0.5em;
+                padding-left: 0.5em;
+                width: auto;
+            }
+
+            .partHeading table td:last-child {
+                padding-left: 2em;
+            }
+
+        .partHeading > td {
+            border-bottom: 0.5pt solid black;
+            border-top: 1pt solid black;
+        }
+
+        /*Table 1 */
+
+        #t1 {
+            font-size: 8pt;
+            border-bottom: 1pt solid black;
+        }
+
+            #t1 svg {
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+            }
+
+        /*Table 1  Cells*/
+
+        #t1c1 {
+            font-size: 6.5pt;
+            border-right: 1pt solid black;
+            width: 1.2in;
+        }
+
+            #t1c1 table td {
+                padding-top: 4pt;
+                padding-bottom: 0pt;
+            }
+
+            #t1c1 span {
+                font-size: 16pt;
+                font-weight: 900;
+            }
+
+        #t1c2 {
+            text-align: center;
+        }
+
+        #t1c3 {
+            vertical-align: middle;
+            font-size: 6.5pt;
+            border-left: 1pt solid black;
+            width: 1.18in;
+            text-align: center;
+        }
+
+        /*Table 2*/
+
+        #t2 {
+            font-size: 8.5pt;
+            text-align: left;
+        }
+
+        #t2note {
+            width: 15.5cm;
+        }
+
+        td.svgCell {
+            width: 1em;
+            vertical-align: top;
+            padding-top: 0.5pt;
+        }
+
+        #t2 b {
+            font-size: 8pt;
+        }
+
+        #leader1::after {
+            content: leader("  .  ") "W-9";
+        }
+
+        #leader2::after {
+            content: leader("  .  ") "W-8ECI";
+        }
+
+        #leader3::after {
+            content: leader("  .  ") "W-8ECI or W-8IMY";
+        }
+
+        #leader4::after {
+            content: leader("  .  ") "W-8ECI or W-8EXP";
+        }
+
+        #leader5::after {
+            content: leader("  .  ") "W-8IMY";
+        }
+
+        /*Table 3: Part I*/
+
+        #t3 {
+            width: 100%;
+        }
+
+        .t3body {
+            font-size: 7.7pt;
+        }
+
+            .t3body > td {
+                border-bottom: 0.5px solid black;
+            }
+
+        .t3bodyCol2 {
+            border-left: 0.5px solid black;
+        }
+
+        .t33r1 {
+            padding-bottom: 2pt;
+        }
+
+        .t33r2 {
+            padding-bottom: 1pt;
+        }
+
+        span.t3valign {
+            vertical-align: bottom;
+        }
+
+        #t3 input[type=text] {
+            width: 100%;
+            height: 15pt;
+            font-size: 10pt;
+        }
+
+        /*Table 4: Part II*/
+
+        #t4 input[type=text] {
+            border: none;
+            border-bottom: 0.6px dashed black;
+            font-size: 8.5pt;
+            height: 8pt;
+            text-align: center;
+        }
+
+        #t4 input[type=checkbox] {
+            margin-left: 2pt;
+            margin-right: 4pt;
+            float: right;
+            vertical-align: top;
+        }
+
+        .t4body {
+            font-size: 7.8pt;
+        }
+
+        #t4i1 {
+            width: 1.8in;
+            height: 6pt;
+            font-size: 6pt;
+        }
+
+        #t4i2 {
+            width: 0.7in;
+        }
+
+        #t4li4 {
+            width: 1.4in;
+            text-align: left !important;
+        }
+
+        #t4li4a {
+            width: 45.8%;
+            text-align: left !important;
+        }
+
+        #t4li5, #t4li6 {
+            width: 100%;
+            text-align: left !important;
+        }
+
+        .t4list td:first-child {
+            width: 2%;
+            padding-left: -2pt;
+        }
+
+        #t4 td.col1 {
+            text-align: right;
+            padding-right: 6pt;
+            vertical-align: top;
+            padding-top: 2pt;
+        }
+
+        #t4 td.col2 {
+            vertical-align: top;
+            font-size: 7pt;
+        }
+
+        #t4r2 > td {
+            padding-top: 4pt;
+        }
+
+        .t4list td:last-child {
+            width: 98%;
+            padding-left: 4pt;
+            vertical-align: top;
+            padding-top: 2pt;
+            padding-bottom: 2pt;
+        }
+
+        /*Table 5: Part III*/
+
+        #t5 p {
+            font-size: 7.8pt;
+        }
+
+        /*Table 6: Part IV*/
+
+        .t6body {
+            font-size: 7.3pt;
+        }
+
+        /*Table 7: Sign Here*/
+
+        #t7 {
+            font-size: 7pt;
+            width: 100%;
+            margin-top: 11pt;
+        }
+
+        #t7c1 {
+            border-bottom: 1pt solid black;
+            padding-bottom: 2px;
+        }
+
+        #signHere {
+            font-size: 10pt;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        #t7svg {
+            width: 1.0in;
+            margin-right: 4pt;
+        }
+
+        #t7dashed1 {
+            border-top: 0.6px dashed black;
+        }
+
+        #t7dashed2 {
+            border-top: 0.6px dashed black;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        #t7dashed3 {
+            border-top: 0.6px dashed black;
+            padding-left: 1em;
+            padding-right: 1em;
+            text-align: center;
+        }
+
+        #t7dashed1, #t7dashed2, #t7dashed3 {
+            padding-bottom: 1pt;
+            padding-top: 1pt;
+        }
+    </style>
+</head>
+<body>
+    <!--************************ Heading ************************-->
+    <table id="t1">
+        <tr>
+            <td id="t1c1">
+                <table>
+                    <tr><td>Form <span>W-8BEN</span></td></tr>
+                    <tr><td>(Rev. February 2006)</td></tr>
+                    <tr><td><p>Department of the Treasury Internal Revenue Service</p></td></tr>
+                </table>
+            </td>
+            <td id="t1c2">
+                <h1>
+                    Certificate of Foreign Status of Beneficial Owner<br />
+                    for United States Tax Withholding
+                </h1>
+                <p>
+                    <b>
+                        <img src="images/triangle.svg" />
+                        Section references are to the Internal Revenue Code.
+                        <img src="images/triangle.svg" />
+                        See separate instructions.
+                    </b>
+                </p>
+                <p>
+                    <b>
+                        <img src="images/triangle.svg" />
+                        Give this form to the withholding agent or payer. Do not send to the IRS.
+                    </b>
+                </p>
+            </td>
+            <td id="t1c3">
+                OMB No. 1545-1621
+            </td>
+        </tr>
+    </table>
+    <!--List of Notes-->
+    <table id="t2">
+        <tr>
+            <td style="padding-top: 2pt;">
+                <table>
+                    <tr>
+                        <td><b>Do not use this form for:</b></td>
+                        <td style="text-align: right;"><b>Instead, use Form:</b></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class="svgCell"><img src="images/circle.svg" /></td>
+                        <td id="leader1">A U.S. citizen or other U.S. person, including a resident alien individual</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class="svgCell"><img src="images/circle.svg" /></td>
+                        <td id="leader2">
+                            A Person claiming that income is effectively connected with the conduct<br />
+                            of a trade or business in the United States
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class="svgCell"><img src="images/circle.svg" /></td>
+                        <td id="leader3">A foreign partnership, a foreign simple trust, or a foreign grantor trust (see instructions for exceptions)</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class="svgCell"><img src="images/circle.svg" /></td>
+                        <td id="leader4">
+                            A foreign government, international organization, foreign central bank of issue, foreign tax-exempt organization,<br />
+                            foreign private foundation, or government of a U.S. possession that received effectively connected income or that is<br />
+                            claiming the applicability of section(s) 115(2), 501(c), 892, 895, or 1443(b) (see instructions)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="t2note">
+                    <b>Note:</b><i>
+                        These entities should use Form W-8BEN if they are claiming treaty benefits or are providing the form only to claim they are a foreign
+                        person exempt from backup withholding.
+                    </i>
+                </div>
+            </td>
+            <td />
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class="svgCell"><img src="images/circle.svg" /></td>
+                        <td id="leader5">A person acting as an intermediary</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-bottom: 4pt;"><b>Note:</b><i>See instructions for additional exceptions.</i></td>
+        </tr>
+    </table>
+
+    <!--************************ Part 1 ************************-->
+
+    <table id="t3">
+        <tr class="partHeading">
+            <td>
+                <table>
+                    <tr>
+                        <td>Part I</td>
+                        <td><b>Identification of Beneficial Owner</b> (See instructions.)</td>
+                    </tr>
+                </table>
+            </td>
+
+        </tr>
+        <tr class="t3body">
+            <td>
+                <table>
+                    <tr>
+                        <td style="width: 5in;">
+                            <b class="formCounter">1</b>
+                            Name of individual or organization that is the beneficial owner
+                        </td>
+                        <td class="t3bodyCol2" style="width: 214px;">
+                            <b class="formCounter">2</b>
+                            Country of incorporation or organization
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" /></td>
+                        <td class="t3bodyCol2"><input type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="t3body">
+            <td>
+                <table>
+                    <tr>
+                        <td rowspan="3" class="formCounter" style="width: 1em">3</td>
+                        <td>Type of beneficial owner:</td>
+                        <td class="t33r1"><input type="checkbox" /><span class="t3valign">Individual</span></td>
+                        <td class="t33r1"><input type="checkbox" /><span class="t3valign">Corporation</span></td>
+                        <td class="t33r1"><input type="checkbox" /><span class="t3valign">Disregarded entity</span></td>
+                        <td class="t33r1"><input type="checkbox" /><span class="t3valign">Partnership</span></td>
+                        <td class="t33r1"><input type="checkbox" /><span class="t3valign">Simple trust</span></td>
+                    </tr>
+                    <tr>
+                        <td class="t33r2"><input type="checkbox" /><span class="t3valign">Grantor trust</span></td>
+                        <td class="t33r2"><input type="checkbox" /><span class="t3valign">Complex trust</span></td>
+                        <td class="t33r2"><input type="checkbox" /><span class="t3valign">Estate</span></td>
+                        <td class="t33r2"><input type="checkbox" /><span class="t3valign">Government</span></td>
+                        <td colspan="2" class="t33r2"><input type="checkbox" /><span class="t3valign">International organization</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" /><span class="t3valign">Central bank of issue</span></td>
+                        <td><input type="checkbox" /><span class="t3valign">Tax-exempt organization</span></td>
+                        <td colspan="2"><input type="checkbox" /><span class="t3valign">Private foundation</span></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="t3body">
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <b class="formCounter">4</b>
+                            Permanent residence address (street, apt. or suite no., or rural route).
+                            <b>Do not use a P.O. box or in-care-of address.</b>
+                        </td>
+                    </tr>
+                    <tr><td><input type="text" /></td></tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="t3body">
+            <td>
+                <table>
+                    <tr>
+                        <td style="width: 5.59in; padding-left: 20pt;">City or town, state or province. Include postal code where appropriate.</td>
+                        <td class="t3bodyCol2" style="padding-left: 1em;">Country (do not abbreviate)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" /></td>
+                        <td class="t3bodyCol2"><input type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="t3body">
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <b class="formCounter">5</b>
+                            Mailing address (if different from above)
+                        </td>
+                    </tr>
+                    <tr><td><input type="text" /></td></tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="t3body">
+            <td>
+                <table>
+                    <tr>
+                        <td style="width: 5.59in; padding-left: 20pt;">City or town, state or province. Include postal code where appropriate.</td>
+                        <td class="t3bodyCol2" style="padding-left: 1em;">Country (do not abbreviate)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" /></td>
+                        <td class="t3bodyCol2"><input type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="t3body">
+            <td>
+                <table>
+                    <tr>
+                        <td style="width: 4.7in;">
+                            <b class="formCounter">6</b>
+                            U.S. taxpayer identification number, if required (see instructions)
+                        </td>
+                        <td class="t3bodyCol2">
+                            <b class="formCounter">7</b>
+                            Foreign tax identifying number, if any (optional)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" style="width: 8cm" />
+                            <input type="checkbox" /><span style="vertical-align:bottom;"> SSN or ITIN</span>
+                            <input type="checkbox" style="margin-left: 8pt" /><span style="vertical-align:bottom;"> EIN</span>
+                        </td>
+                        <td class="t3bodyCol2"><input type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="t3body">
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <b class="formCounter">8</b>
+                            Reference number(s) (see instructions)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" style="text-align: center;" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!--************************ Part 2 ************************-->
+
+    <table id="t4">
+        <tr class="partHeading">
+            <td>
+                <table>
+                    <tr>
+                        <td>Part II</td>
+                        <td><b>Claim of Tax Treaty Benefits</b> (if applicable)</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="t4body" style="padding-top: 5pt;">
+                <table>
+                    <tr>
+                        <td class="formCounter">9</td>
+                        <td style="padding-bottom: 2pt;">
+                            <b>I certify that (check all that apply):</b><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1" style="padding-bottom: 2pt; padding-top: 2pt;"><b>a </b></td>
+                        <td>
+                            <table class="t4list">
+                                <tr>
+                                    <td class="col2"><input type="checkbox" /></td>
+                                    <td style="font-size: 6.4pt; vertical-align: top; padding-bottom: -3pt; padding-top: 3pt;">
+                                        The beneficial owner is a resident of
+                                        <input type="text" id="t4i1" />within the meaning of the income tax treaty between the United States and that country.
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><b>b </b></td>
+                        <td>
+                            <table class="t4list">
+                                <tr>
+                                    <td class="col2"><input type="checkbox" /></td>
+                                    <td>If required, the U.S. taxpayer identification number is stated on line 6 (see instructions).</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><b>c </b></td>
+                        <td>
+                            <table class="t4list">
+                                <tr>
+                                    <td class="col2"><input type="checkbox" /></td>
+                                    <td>
+                                        The beneficial owner is not an individual, derives the item (or items) of income for which the treaty benefits
+                                        are claimed, and, if applicable, meets the requirements of the treaty provision dealing with limitation on benefits (see instructions).
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><b>d </b></td>
+                        <td>
+                            <table class="t4list">
+                                <tr>
+                                    <td class="col2"><input type="checkbox" /></td>
+                                    <td>
+                                        The beneficial owner is not an individual, is claiming treaty benefits for dividends received from a foreign corporation or interest
+                                        from a U.S. trade or business of a foreign corporation, and meets qualified resident status (see instructions).
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col1"><b>e </b></td>
+                        <td>
+                            <table class="t4list">
+                                <tr>
+                                    <td class="col2"><input type="checkbox" /></td>
+                                    <td>
+                                        The beneficial owner is related to the person obligated to pay the income within the meaning of section 267(b) or 707(b), and will file
+                                        Form 8833 if the amount subject to withholding received during a calendar year exceeds, in the aggregate, $500,000.
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="t4r2">
+                        <td class="formCounter">10</td>
+                        <td>
+                            <b>Special rates and conditions</b> (if applicable - see instructions): The beneficial owner is claiming the provisions
+                            of Article <input type="text" id="t4i2" /> of the treaty identified on line 9a above to claim a <input type="text" id="t4li3" />%
+                            rate of withholding on (specify type of income):<input type="text" id="t4li4" /> .
+                            <br />
+                            Explain the reasons the beneficial owner meets the terms of the treaty article:
+                            <input type="text" id="t4li4a" />
+                            <input type="text" id="t4li5" />
+                            <input type="text" id="t4li6" style="border-bottom: none;" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!--************************ Part 3 ************************-->
+
+    <table id="t5" style="margin-top: 2px;">
+        <tr class="partHeading">
+            <td>
+                <table>
+                    <tr>
+                        <td>Part III</td>
+                        <td><b>Notional Principal Contracts</b></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-top: 2pt; padding-bottom: 2pt;">
+                <table>
+                    <tr>
+                        <td style="vertical-align: top"><b style="font-size: 8pt; padding-left: 8pt; padding-right: 6.75pt;">11</b></td>
+                        <td style="vertical-align: top"><input type="checkbox" /></td>
+                        <td>
+                            <p>
+                                I have provided or will provide a statement that identifies those notional principal contracts from which the income is <b>not</b> effectively
+                                connected with the conduct of a trade or business in the United States. I agree to update this statement as required.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!--************************ Part 4 ************************-->
+
+    <table id="t6">
+        <tr class="partHeading">
+            <td>
+                <table>
+                    <tr>
+                        <td>Part IV</td>
+                        <td><b>Certification</b></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="t6body">
+            <td style="padding-top: 2pt;">
+                <p>
+                    Under penalties of perjury, I declare that I have examined the information on this form and to the best of my knowledge and belief it is true, correct, and complete.
+                    I further certify under penalties of perjury that:
+                </p>
+                <p><b>1 </b>I am the beneficial owner (or am authorized to sign for the beneficial owner) of all the income to which this form relates,</p>
+                <p><b>2 </b>The beneficial owner is not a U.S. person,</p>
+                <p>
+                    <b>3 </b>The income to which this form relates is (a) not effectively connected with the conduct of a trade or business in the United States,
+                    (b) effectively connected but is not subject to tax under an income tax treaty, (c) the partner's share of a partnership's effectively connected income, <b>and</b>
+                </p>
+                <p><b>4 </b>For broker transactions or barter exchanges, the beneficial owner is an exempt foreign person as defined in the instructions.</p>
+                <p>
+                    Furthermore, I authorize this form to be provided to any withholding agent that has control, receipt, or custody of the income of which
+                    I am the beneficial owner or any withholding agent that can disburse or make payments of the income of which I am the beneficial owner.
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <!--************************ Sign Here ************************-->
+
+    <table id="t7">
+        <tr>
+            <td id="t7c1">
+                <table>
+                    <tr>
+                        <td id="signHere">
+                            <table id="t7svg">
+                                <tr>
+                                    <td style="padding-bottom: 2pt;">Sign Here </td>
+                                    <td style="padding-left: 4pt;">
+                                        <svg:svg width="12px" height="24px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                            <svg:polygon points="0,0 0,24 12,12" style="fill:#000000;" />
+                                        </svg:svg>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><input type="text" style="margin-bottom: 1pt; width: 1.2in;" /></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 58%;"><span id="t7dashed1">Signature of beneficial owner (or individual authorized to sign for beneficial owner)</span></td>
+                                    <td style="width: 21%;"><span id="t7dashed2">Date (MM-DD-YYYY)</span></td>
+                                    <td style="width: 21%;"><span id="t7dashed3">Capacity in which acting</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td style="font-size: 8pt; width: 57%"><b>For Paperwork Reduction Act Notice, see separate instructions.</b></td>
+                        <td style="width: 23%;">Cat. No. 25047Z</td>
+                        <td style="text-align: right; width:20%;">Form <b style="font-size:150%;">W-8BEN</b> (Rev. 2-2006)</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

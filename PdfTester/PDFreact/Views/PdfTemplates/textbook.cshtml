@@ -1,0 +1,465 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Textbook</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+    <p class="coverPage" style="font-size: 45pt; color: darkslategrey; font-style: italic; position: absolute; top: 1.55cm; left: 2.2cm;">Tell Me About</p>
+    <!-- Using position:relative to make sure, that the h1 is in the foreground. This
+         solution is faster than using z-index. -->
+    <h1 style="position:relative">Page Layout</h1>
+
+    <div id="coverList" style="font-size:16pt; position: absolute; bottom: 1.5cm; left: 15%;">
+        <p>
+            <a href="#HeadersAndFooters">Headers and Footers</a>
+        </p>
+        <p style="padding-left: 4mm;">
+            <a href="#AddingTitlesToTheHeader">Adding Titles to the Header</a>
+        </p>
+        <p style="padding-left: 6mm;">
+            <a href="#AlternatingHeaders">Alternating Headers</a>
+        </p>
+        <p style="padding-left: 8mm;">
+            <a href="#StylingCertainPages">Styling Certain Pages</a>
+        </p>
+        <p style="padding-left: 10mm;">
+            <a href="#ControllingPageBreaks">Controlling Page Breaks</a>
+        </p>
+        <p style="padding-left: 12mm;">
+            <a href="#PreventingLonelyLines">Preventing Lonely Lines</a>
+        </p>
+        <p style="padding-left: 14mm;">
+            <a href="#RunningTableHeaders">Running Table Headers</a>
+        </p>
+    </div>
+
+    <div style="position: absolute; top:22%; right: 0">
+        <img class="coverPage" src="resources/water-drop-on-grass.jpg" />
+        <div class="coverPage" style="text-align:right; position: absolute; color: lightgrey; bottom: 0.3em; right: 2mm; font-size: 6pt;">
+            Photo by Jiri Hodan<br />
+            <span style="font-size: 5pt">http://www.publicdomainpictures.net/view-image.php?image=20681&#38;picture=wassertropfen-auf-gras</span>
+        </div>
+    </div>
+
+    <h2>Styling the Page</h2>
+
+    <h3 id="HeadersAndFooters">Headers and Footers</h3>
+
+    <p>
+        The most important part of styling the pages of a document - apart from the actual size
+        of the pages - are headers and footers. Here we expect to find at least page numbers.
+    </p>
+    <p>
+        But before numbering our pages let's have a quick look on how to create just a simple
+        text that can be found on top of every page of our document.
+    </p>
+    <p>To set a header, use the following CSS:</p>
+    <div class="note">
+        <pre>@@page {
+    @@top-right {
+        content: "My first Header";
+    }
+}</pre>
+    </div>
+
+
+    <figure class="floatr image" style="width:300px">
+        <img src="resources/PageMargin.png" width="300" />
+        <figcaption>
+            The areas at the edges of the page are called page margin boxes. You can find more
+            information on them in the manual.
+        </figcaption>
+    </figure><p>
+        The upper CSS creates a text in the top right corner of every page in our
+        document. The text can be styled with further CSS rules, for example <i>font-size</i> or
+        <i>color</i>.
+    </p>
+    <p>Creating a page footer works just the same way but with the keyword "<i>bottom</i>" instead of top.</p>
+    <p>
+        We can also use other CSS rules to style the page margin box - here the header - and give it
+        a more appealing look. For example, we can use <i>border-bottom</i> to draw a line between content and header.
+        This is also done in this document.
+    </p>
+    <br />
+    <p>
+        The most common use case of headers and footers is page numbering. In order to
+        display the page numbers we have to use a <strong>counter</strong>.
+    </p>
+    <figure class="floatr image">
+        <img src="resources/PageCounter.png" width="350" />
+        <figcaption>Page numbers are created with counters.</figcaption>
+    </figure>
+    <p>
+        First, we have to tell our counter what to count. Using the following CSS, we tell the counter that every
+        time the selector finds the selected element - in this case the page - the counter named "page" is incremented:
+    </p>
+
+    <div class="note">
+        <pre>@@page {
+        <strong>counter-increment: page 1</strong>;
+}</pre>
+    </div>
+    <p>Now that our counter has a name and knows what to count, we can access it in the header:</p>
+    <div class="note">
+        <pre>@@page {
+    @@top-right: {
+        content: "My first Header - Page " <strong>counter(page)</strong>;
+    }
+}</pre>
+    </div>
+    <p>
+        The keyword <i>counter</i> signals that this "text" is to be replaced with the current
+        value of the counter named in the brackets.
+    </p>
+    <p>
+        Would you like to know more about the capabilities of counters? Maybe how to use them in headings?
+        You can find more information in the PDFreactor manual.
+    </p>
+
+    <h3 id="AddingTitlesToTheHeader">Adding Titles to the Header</h3>
+
+    <p>
+        Dynamic headers will always look better than static ones. In the previous chapter we saw that the content of headers can be
+        replaced with the current value of variables. This does not only work with numbers but also with text (aka strings).
+    </p>
+    <p>Just like with the page counter, the value that should be shown on the page must first be set via CSS selectors:</p>
+    <div class="note">
+        <pre>h1 {
+        <strong>string-set: chaptertitle self;</strong>
+}</pre>
+    </div>
+    <p>
+        And as with the counters the first value is the name of the variable, the second one is what should be set.
+        In this case the keyword <i>self</i> is used to indicate that the text of the selected element - here the h1 - should be used.
+    </p>
+    <p>Accessing this variable is just as easy as with page numbering you only need to change the keyword <i>counter</i> to <i>string</i>:</p>
+    <div class="note">
+        <pre>@@page {
+    @@top-left: {
+        content: "Chapter " <strong>string(chaptertitle)</strong>;
+    }
+}</pre>
+    </div>
+    <p>With this CSS rule, we now have a short text and the title of the last heading at the top left corner of each page.</p>
+
+    <h3 id="AlternatingHeaders">Alternating Headers</h3>
+
+    <figure class="floatr image" style="width: 300px">
+        <img src="resources/BookLayout.png" width="300" />
+        <figcaption>Layout features of a book</figcaption>
+    </figure>
+    <p>
+        If you want to print and bind a document with headers and footers you often need
+        different headers for even and odd pages, as the page number should always be on the
+        outer edge of the pages.
+    </p>
+    <p>
+        Basically, you need to define two different headers for these cases. One for all pages on the right side
+        and one for all pages on the left side of the book. Luckily there is a CSS selector for this:
+    </p>
+    <div class="note">
+        <pre>@@page<strong>:right</strong> {
+    @@top-left: {
+        content: "Chapter " string(chaptertitle);
+    }
+    @@top-right: {
+        content: "Page " counter(page);
+    }
+}</pre>
+    </div>
+    <p>
+        The so called <strong>pseudo selector</strong> ":right" limits the rules that follow to pages on the right. Of course
+        the same can be done with ":left" for the pages on the other side.
+    </p>
+
+    <h3 id="StylingCertainPages">Styling Certain Pages</h3>
+
+    <p>
+        As we have seen in the previous chapter, we have different styles for pages on the right and the left. But
+        we can also select one specific page in order to style it. A common use case is the very first page
+        of document, the cover. You don't want the header with page numbering on this page.
+    </p>
+    <p>
+        Selecting the first page is also the simplest case. Just use the pseudo selector ":first".
+        With this page selected you can suppress the styles of the header that has been set in the
+        previous chapters:
+    </p>
+    <div class="note">
+        <pre>@@page<strong>:first</strong> {
+    @@top-left: {
+        content: "";
+    }
+    @@top-right: {
+        content: "";
+    }
+}</pre>
+    </div>
+    <p>
+        But what if you want to select a certain page somewhere in the middle of your document? For this case there are
+        <strong>named pages</strong>. You can give the page a name and then select it via CSS.
+    </p>
+    <p>
+        Naming a page is done by its content. The naming element causes a page break
+        and gives its page the defined name:
+    </p>
+    <div class="note">
+        <pre>table.wide {
+        <strong>page: landscape</strong>;
+}</pre>
+    </div>
+    <p>In this case "landscape" is the name the page with this table is going to have.</p>
+    <div class="note">
+        <pre>@@page <strong>landscape</strong> {
+    size: A4 landscape;
+}</pre>
+    </div>
+    <p>
+        What we have now is that all tables of the class "wide" are now on pages that have
+        been rotated by 90 degrees so that our wide table has much more room to the sides.
+    </p>
+    <p>This is also done in the following table giving you an overview over some selectors and their use cases.</p>
+    <p class="note">You can find more information on how to select page margin boxes in the PDFreactor manual.</p>
+    <table class="wide styled">
+        <thead>
+            <tr>
+                <th>
+                    Selector
+                </th>
+                <th>
+                    What is Selected
+                </th>
+                <th>
+                    Common Use Cases
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @@page
+            </td>
+            <td>
+                All pages of the document (not their content)
+            </td>
+            <td>
+                Setting the page size, setting up a page counter,
+                setting styles like a border on the top.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @@page:first
+        </td>
+        <td>
+            The very first page of the document
+        </td>
+        <td>
+            Disabling styles for the cover page,
+            setting specific styles for the first page, e.g. background-color
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @@page:right/:left
+    </td>
+    <td>
+        Selecting all pages on the right/left
+    </td>
+    <td>
+        Swapping the side of the page numbering depending on the page (for printing and binding books)
+    </td>
+</tr>
+<tr>
+    <td>
+        @@page name
+</td>
+<td>
+    Select all pages containing elements with the CSS property "page: name"
+</td>
+<td>
+    Rotating a certain page to landscape so a wide table or image may fit,
+    suppressing page header and styling a certain page with background-images
+</td>
+</tr>
+<tr>
+    <td>
+        @@page {<br />
+    &nbsp;&nbsp;@@top-left/<br />
+    &nbsp;&nbsp;@@top-center/<br />
+    &nbsp;&nbsp;@@top-right<br />
+</td>
+<td>
+    Select the margin box on the top left/center/right of the page
+</td>
+<td>
+    Styling the box, adding content like page numbering
+</td>
+</tr>
+<tr>
+    <td>
+        @@page {<br />
+    &nbsp;&nbsp;@@right-top/<br />
+    &nbsp;&nbsp;@@right-middle/<br />
+    &nbsp;&nbsp;@@right-bottom<br />
+</td>
+<td>
+    Select the margin boxes on the right of the page
+</td>
+<td>
+    Styling the header on a landscape page (e.g. using a border. Note
+    that text can not be rotated alone)
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Page Breaks</h2>
+
+<h3 id="ControllingPageBreaks">Controlling Page Breaks</h3>
+
+<p>
+    You may have noticed, that on the previous page the table stood alone although there was more than enough space for more
+    content. However, using CSS a page break was enforced.
+</p>
+<p>
+    Enforcing a page break is done with the CSS properties <i>break-before</i> and <i>break-after</i>. In this document
+    for example every chapter begins on its own page.
+</p>
+<div class="note">
+    <pre>h1 {
+    <strong>break-before: page</strong>;
+}</pre>
+</div>
+<figure class="floatr image" style="width: 250px;">
+    <img src="resources/WrongPageBreak.png" width="200" />
+    <figcaption>That's not how it is done.</figcaption>
+</figure>
+<p>
+    On the other hand there are cases where you don't want a page break to occur, for example inside a table or code box.
+    In these cases the property <i>break-inside</i> is used.
+</p>
+<p>
+    All these properties can be set to <i>page</i>, <i>avoid-page</i> and <i>auto</i>, the default value. For more information on page breaks,
+    check out the PDFreactor manual.
+</p>
+<p class="note">
+    Images are never split and put on different pages. PDFreactor will always try to have the complete
+    image on one single page.
+</p>
+<table class="styled">
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>What it does</th>
+            <th>Use Cases</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>break-before:page</td>
+            <td>The element is always on a new page</td>
+            <td>Title of new chapter, element on landscape page, big elements e.g. images</td>
+        </tr>
+        <tr>
+            <td>break-before:avoid-page</td>
+            <td>The element is not on the top of a new page (if avoidable)</td>
+            <td>Table with a short description right above it</td>
+        </tr>
+        <tr>
+            <td>break-after:page</td>
+            <td>The following element is always on a new page</td>
+            <td>element (e.g. big table) on landscape page</td>
+        </tr>
+        <tr>
+            <td>break-after:avoid-page</td>
+            <td>If a page break would occur after this element, it is put on the next page instead.</td>
+            <td>Two elements belonging together like a image and a description.</td>
+        </tr>
+        <tr>
+            <td>break-inside:avoid-page</td>
+            <td>If a page break would occur inside this element, put it on the next page instead.</td>
+            <td>table that should not have a page break, a code box, table cells</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="PreventingLonelyLines">Preventing Lonely Lines</h3>
+
+<p>
+    There can be situations where the line of a paragraph does not fit on a page anymore and it
+    is moved onto the next page - all alone. Poor little line. Fortunately this can be prevented.
+</p>
+<figure class="floatr image" style="width: 300px;">
+    <img src="resources/orphan.png" width="300" />
+    <figcaption>The single line is an orphan.</figcaption>
+</figure>
+<p>
+    If a lonely line is on the next page it is called
+    a widow. If all other lines are on the next page, the line that has been left behind is referred to as an orphan.
+</p>
+<p>
+    Setting the minimum number of lines that may be alone on a page is done with CSS. The following CSS shows the
+    default settings of PDFreactor for orphans and widows:
+</p>
+<div class="note">
+    <pre>p {
+    orphans: 2;
+    widows: 2;
+}</pre>
+</div>
+<figure class="floatr image" style="width: 300px;">
+    <img src="resources/noOrphan.png" width="300" />
+    <figcaption>The orphan has been moved to the other lines of the paragraph.</figcaption>
+</figure>
+<p>
+    Changing the value to one will allow orphans and widows. Changing it to higher values will
+    prevent even multiple line widows and orphans.
+</p>
+
+<h3 id="RunningTableHeaders">Running Table Headers</h3>
+
+<p>
+    Whenever a page break occurs within a table, running headers come in handy. On each page the table header is repeated
+    at the top.
+</p>
+<p>In order to use running headers, all you have to do is using the following HTML structure when creating the table:</p>
+<div class="note">
+    <pre>&lt;table&gt;
+    <strong>&lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;
+            &lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;</strong>
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+</div>
+<p>
+    This table would have only one column. For more columns just add more th/td elements.
+    Also note that for every column in the table body there must be at least an empty cell in the table head.
+</p>
+<figure class="important">
+    <figcaption>Summary</figcaption>
+    <div>
+        <p>What we have learned in this chapter:</p>
+        <ul>
+            <li>How to use CSS to properly make page breaks</li>
+            <li>How to avoid lonely lines</li>
+            <li>How to create a table with running headers.</li>
+        </ul>
+        <p>You can find more information on these topics in the PDFreactor Manual.</p>
+    </div>
+</figure>
+</body>
+</html>
