@@ -1,303 +1,113 @@
 @media print {
-
-    @page:first {
-
-        @top-right {
-            content: none;
-        }
-
-        @top-left {
-            content: none;
-        }
+    @page:first { @top-right { content: none; }
+        @top-left { content: none; }
     }
+    @page { counter-increment: page; margin: 2cm 1.5cm 2cm 1.5cm;
+        @top-left { content: xhtml('<div class="header"> <table class="header header-footer"> <tr> <td class="invoicetext"></td> <td class="right subtotaltextHeader"></td> <td class=" currency"></td> <td class="subtotal"></td> </tr> </table> </div>'); vertical-align: bottom; padding-left: 0.2cm; padding-right: 0.2cm; }
 
-    @page {
-        counter-increment: page;
-        margin: 2cm 2.5cm 3cm 2.5cm;
-        font: 9pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
 
-        @top-left {
-            content: xhtml('<div class="header"> <table class="header header-footer"> <tr> <td class="invoicetext"></td> <td class="right subtotaltextHeader"></td> <td class="right currency"></td> <td class="subtotal"></td> </tr> </table> </div>'); vertical-align: bottom;
-            padding-left: 0.2cm;
-            padding-right: 0.2cm;
-        }
-
-        @bottom-left {
-            content: xhtml('<div class="footer"> <table class="footer header-footer"> <tr> <td class="pagecounter"></td> <td class="right subtotaltextFooter"></td> <td class="right currency"></td> <td class="subtotal"></td> </tr> </table> <p class="companyinfo"></p> </div>'); vertical-align: top;
-            padding-left: 0.2cm;
-            padding-right: 0.2cm;
-        }
+        @bottom-left { content: xhtml('<div class="footer"> <table class="footer header-footer"> <tr> <td class="pagecounter"></td> <td class="right subtotaltextFooter"></td> <td class=" currency"></td> <td class="subtotal"></td> </tr> </table> <p class="companyinfo"></p> </div>'); vertical-align: top; padding-left: 0.2cm; padding-right: 0.2cm; }
     }
 }
-
-div.footer, div.header {
-    font: 9pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-    width: 100%;
-}
-
-table.header-footer {
-    padding: 0pt;
-    text-align: right;
-    border-collapse: collapse;
-    background: #F8F8F8;
-    width: 100%;
-}
-
-    table.header-footer td:first-child {
-        text-align: left;
-    }
-
-    table.header-footer td.subtotaltextHeader {
-        padding-right: 1.7em;
-    }
-
-    table.header-footer td.subtotaltextHeader {
-        position: absolute;
-        right: 11.5em;
-    }
-      table.header-footer td.subtotaltextFooter {
-        padding-right: 1.7em;
-    }
-
-    table.header-footer td.subtotaltextFooter {
-        position: absolute;
-        right: 11.5em;
-    }
+body { font-family: Helvetica, Arial, sans-serif; font-size: 13px; line-height: 150%; color: #555; background-color: #ffffff; }
+div.footer, div.header { padding: 0px; width: 100%;  font-size: 10px;}
+table.header-footer { text-align: right; border-collapse: collapse; background: #fafafa; width: 100%; border: 0px solid #eee; }
+table.header-footer td.pagecounter { text-align: left;  width: 200px}
+table.header-footer td.subtotaltextHeader {  width: 200px  }
+table.header-footer td.subtotaltextHeader {   width: 200px }
+table.header-footer td.subtotaltextFooter {   width: 200px;}
+table.header-footer td.currency { width: 50px; }
+table.header-footer td.subtotal {   width: 80px;  background: #eee}
+div.header td.invoicetext {  }
 
 
-    table.header-footer td.currency {
-        position: absolute;
-        right: 7em;
-    }
-
-    table.header-footer td.subtotal {
-        position: absolute;
-        right: 1.5em;
-    }
-
-div.header td.subtotal::before {
-    content: string(sum, start);
-}
-
-div.header td.invoicetext {
-    width: 16cm;
-}
-
-div.header td.invoicetext::before {
-    content: string(invoice, start);
- }
-
-div.header td.subtotaltextHeader::before {
-    content: string(subtotaltextHeader, start);
-}
-div.header td.subtotaltextFooter::before {
-    content: string(subtotaltextFooter, start);
-}
-
-div.header td.currency::before {
-    content: string(currency, start);
-}
-
-div.footer td.subtotaltextHeader::before {
-    content: string(subtotaltextHeader, last);
-}
-div.footer td.subtotaltextFooter::before {
-    content: string(subtotaltextFooter, last);
-}
-
-div.footer td.currency::before {
-    content: string(currency, last);
-}
+div.header td.subtotal::before { content: string(sum, start); }
+div.header td.invoicetext::before { content: string(invoice, start); }
+div.header td.subtotaltextHeader::before { content: string(subtotaltextHeader, start); }
+div.header td.subtotaltextFooter::before { content: string(subtotaltextFooter, start); }
+div.header td.currency::before { content: string(currency, start); }
+div.footer td.subtotaltextHeader::before { content: string(subtotaltextHeader, last); }
+div.footer td.subtotaltextFooter::before { content: string(subtotaltextFooter, last); }
+div.footer td.currency::before { content: string(currency, last); }
+div.footer td.subtotal::before { content: string(sum, last); }
+div.footer td.pagecounter::before { content: "Page "counter(page) "/" counter(pages); }
 
 
-div.footer td.subtotal::before {
-    content: string(sum, last);
-}
+div.footer p.companyinfo { background: red; border: 1px solid white; }
+div.footer p.companyinfo { font: 10px Arial, Helvetica, sans-serif; color: #7F7F7F; text-align: center; }
 
-div.footer td.pagecounter::before {
-    content: "Page " counter(page) "/" counter(pages);
-}
 
-div.footer p.companyinfo {
-    background: white;
-    border: 1px solid white;
-}
+barcode { -ro-replacedelement: barcode; }
+.companyinformation { float: left; width: 45%; padding: 10px; }
+.logo { display: block; width: 100px; height: 50px; }
+.logo img { max-height: 40px }
+.doctypenumber { padding: 5px 0; border-bottom: 1px solid #ddd; margin-bottom: 5px; font-weight: bold; font-size: 13px; }
+.comp_name { }
+.comp_extras { font-size: 9px; color: #888; margin-top: 20px; }
+.doc_date { padding: 5px 0; font-weight: bold; color: #888 }
+.clientinformation { float: right; width: 35%; margin-top: 85px; padding: 10px; }
+.client_name { font-weight: bold; }
+.client_extras { font-size: 9px; color: #888; margin-top: 20px; }
+.comp_fiscal, .client_fiscal { }
+.nif_desc { font-weight: bold; }
+.nif_numb { }
 
-div.footer p.companyinfo {
-    font: 6pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-    color: #7F7F7F;
-    text-align: center;
-}
-
-barcode {
-    -ro-replacedelement: barcode;
-}
-
-img.logo {
-    height: 42pt;
-    margin-bottom: 20pt;
-}
-
-div.companyinformation {
-    text-align: right;
-    font: 6pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-    color: #7F7F7F;
-}
-
-div.addressline {
-    font: 6pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-    color: #7F7F7F;
-    margin-bottom: 20pt;
-    margin-top: -40pt;
-}
-
+/*
 div.recipient {
-    font: 10pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-    margin-left: 20pt;
+            font: 10pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
+            margin-left: 20pt;
 }
-
 div.descbox {
-    float: right;
-    width: 160pt;
-    font: 8pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-    border: 1pt solid black;
+            float: right;
+            width: 160pt;
+            font: 8pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
+            border: 1pt solid black;
 }
-
 div.descboxheader {
-    background-color: #F0F0F0;
-    border-bottom: 1pt solid black;
-    text-align: center;
-    font: bold 12pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
+            background-color: #F0F0F0;
+            border-bottom: 1pt solid black;
+            text-align: center;
+            font: bold 12pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
 }
-
 div.infotable {
-    border: 0.5pt solid black;
-    margin-top: 0.5cm;
-    margin-bottom: 0.5cm;
+            border: 0.5pt solid black;
+            margin-top: 0.5cm;
+            margin-bottom: 0.5cm;
 }
-
 table.infotable {
-    font: 8pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-    width: 100%;
+            font: 8pt  Arial, Helvetica, sans-serif;
+            width: 100%;
 }
-
 hr.floated {
-    visibility: hidden;
-    float: left;
+            visibility: hidden;
+            float: left;
 }
-
 table.postable {
-    font: 9pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0pt 10pt;
-    margin-bottom: 5pt;
+            font: 9px  Arial, Helvetica, sans-serif;
+            width: 100%;
 }
+*/
 
-    table.postable tbody tr:not(.postfooter):nth-child(even) {
-        background-color: #FAFAFA;
-    }
+/*
+table.postable tbody tr:not(.postfooter):nth-child(even) {
+            background-color: #FAFAFA;
+}*/
 
-hr.invisible {
-    visibility: hidden;
-    background: #fff;
-    color: #fff;
-    clear: both;
-    margin: 0;
-}
-
-tr.postheader {
-    background-color: #F0F0F0;
-    padding: 4pt;
-}
-
-tr.transfer > td:first-child {
-    overflow: hidden;
-}
-
-tr.tansfer > td {
-    background-color: #F0F0F0;
-    padding: 4pt;
-}
-
-tr.postheader td {
-    white-space: nowrap;
-}
-
-tr.postfooter {
-    background-color: #F0F0F0;
-    padding: 4pt;
-}
-
-tr.postfootercontent {
-    background-color: white;
-}
-
-td {
-    vertical-align: top;
-}
-
-    td.subtotal {
-        text-align: right;
-        padding-right: 5pt;
-        font-weight: bold;
-    }
-
-    td.total {
-        background-color: #fff !important;
-        border: 1pt solid black;
-        text-align: right;
-        padding-right: 5pt;
-        font-weight: bold;
-    }
-
-    td.right {
-        text-align: right;
-        width: 1em;
-        padding-right: 0.5em;
-    }
-
-p {
-    font: 8pt 'RealObjects core sans-serif', Arial, Helvetica, sans-serif;
-}
-
-    p.terms {
-        font-weight: bold;
-        text-decoration: underline;
-        font-style: italic;
-    }
-
-body.main {
-    string-set: subtotaltextHeader "" subtotaltextFooter "" sum "" currency "";
-    counter-reset: position;
-}
-
-div.sum-subtotal {
-    string-set: sum self;
-    visibility: hidden;
-    position: absolute;
-}
-
-
-table.postable tbody tr:first-child {
-    string-set: subtotaltextHeader "Valor a Transportar",subtotaltextFooter "Valor Transportado", currency "EUR", sum "0";
-}
-
-table.postable tbody tr:last-child {
-    string-set: subtotaltextHeader "Valor a Transportar",subtotaltextFooter "Valor Transportado", sum "", currency "";
-}
-
-td.position {
-    counter-increment: position;
-    text-align: right;
-    padding-right: 10pt;
-}
-
-    td.position::before {
-        content: counter(position);
-    }
-
-div.posttext {
-    break-inside: avoid;
-    padding-top: 10pt;
-}
+hr.invisible { visibility: hidden; background: #fff; color: #fff; clear: both; margin: 0; }
+table { width: 100%; font-size: 12px; }
+tr.postheader td { background-color: #fafafa; white-space: nowrap; border-bottom: 2px solid #888; padding: 5px 10px; }
+table tbody tr td { border-bottom: 1px dotted #eee }
+td { vertical-align: top; padding: 5px 10px; }
+tr:nth-child(even) { }
+td.subtotal { padding-right: 5pt; font-weight: bold; }
+td.total { border: 1pt solid black; text-align: right; padding-right: 5pt; font-weight: bold; }
+td.right { text-align: right; width: 1em; padding-right: 0.5em; }
+p { font: 8pt Arial, Helvetica, sans-serif; }
+p.terms { font-weight: bold; text-decoration: underline; font-style: italic; }
+body.main { string-set: subtotaltextHeader "" subtotaltextFooter "" sum "" currency ""; counter-reset: position; }
+div.sum-subtotal { string-set: sum self; visibility: hidden; position: absolute; }
+table.postable tbody tr:first-child { string-set: subtotaltextHeader "Valor a Transportar", subtotaltextFooter "Valor Transportado", currency "EUR", sum "0"; }
+table.postable tbody tr:last-child { string-set: subtotaltextHeader "Valor a Transportar", subtotaltextFooter "Valor Transportado", sum "", currency ""; }
+td.position { counter-increment: position; text-align: right; padding-right: 10pt; }
+td.position::before { content: counter(position); }
+div.posttext { break-inside: avoid; padding-top: 10pt; }

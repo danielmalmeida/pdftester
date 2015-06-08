@@ -75,7 +75,7 @@ namespace PDFreact.Controllers
 
         public ActionResult PdfDoc()
         {
-            var doc = CreateTargetDocument(200);
+            var doc = CreateTargetDocument(30);
 
             var docTemplate = RenderViewToString(ControllerContext, "docTemplate", doc);
 
@@ -89,6 +89,15 @@ namespace PDFreact.Controllers
 
             return ReturnFile(pdf);
         }
+
+        public ActionResult PdfDocForCeliaTests()
+        {
+            var doc = CreateTargetDocument(20);
+
+            return View("~/Views/PdfTemplates/docTemplate.cshtml", doc);
+        }
+
+
 
         private TargetDocument CreateTargetDocument(int nLines)
         {
